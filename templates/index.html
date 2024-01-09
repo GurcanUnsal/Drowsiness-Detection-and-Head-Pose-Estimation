@@ -34,9 +34,9 @@
     </script>
   </head>
   <body>
-    <h1>Drowsiness Detection</h1>
-    <button id="start-btn" onclick="startWebcam()">Start Webcam</button>
-    <button disabled id="stop-btn" onclick="stopWebcam()">Stop Webcam</button>
+    <h1 class="text-center fw-bold">Drowsiness Detection</h1>
+    <button class="btn btn-primary" id="start-btn" onclick="startWebcam()">Start Webcam</button>
+    <button class="btn btn-primary" disabled id="stop-btn" onclick="stopWebcam()">Stop Webcam</button>
     <script
       type="text/javascript"
       src="{{url_for('static', filename='script/index.js')}}"
