@@ -19,3 +19,20 @@ def video():
     return Response(gen(Video()), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 app.run()
+
+
+
+
+
+
+
+
+
+
+
+
+# authentication eklenecek
+# kullanıcı profilinden derslerdeki performansını görebilir
+# bildirim yollanacak
+# mediapipe eklenebilir
+# chat eklenebilir
