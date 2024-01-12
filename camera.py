@@ -128,12 +128,7 @@ class Video(object):
                 #cv.putText(frame, "y: " + str(np.round(y,2)), (500, 100), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
                 #cv.putText(frame, "z: " + str(np.round(z,2)), (500, 150), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
 
-
-
-
-
-
-        ### YOLO
+        ### YOLO - Drowsiness Detection
         #frame = cv.cvtColor(cv.flip(frame, 1), cv.COLOR_RGB2BGR)
         results = model(frame)
         #print(results)
