@@ -93,26 +93,15 @@ class Video(object):
 
             # See where the user's head tilting
                 if y < -10:
-                    if x > -10 and x < 10:
-                        text = "Looking Left"
-                    elif x > 10:
-                        text = "Looking Upper Left"
-                    else:
-                        text = "Looking Down Left"
+                    text = "Looking Left"
                 elif y > 10:
-                    if x > -10 and x < 10:
-                        text = "Looking Right"
-                    elif x > 10:
-                        text = "Looking Upper Right"
-                    else:
-                        text = "Looking Down Right"
-
+                    text = "Looking Right"
                 elif x < -10:
                     text = "Looking Down"
                 elif x > 10:
                     text = "Looking Up"
                 else:
-                    text = "Forward"
+                    text = "Looking Forward"
 
                 # Display the nose direction
                 #nose_3d_projection, jacobian = cv2.projectPoints(nose_3d, rot_vec, trans_vec, cam_matrix, dist_matrix)
@@ -123,7 +112,7 @@ class Video(object):
                 #cv.line(frame, p1, p2, (255, 0, 0), 3)
 
                 # Add the text on the image
-                cv.putText(frame, text, (20, 50), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 1)
+                cv.putText(frame, text, (20, 50), cv.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 2)
                 #cv.putText(frame, "x: " + str(np.round(x,2)), (500, 50), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
                 #cv.putText(frame, "y: " + str(np.round(y,2)), (500, 100), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
                 #cv.putText(frame, "z: " + str(np.round(z,2)), (500, 150), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)

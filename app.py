@@ -21,6 +21,7 @@ login_manager.login_view = 'login'
 
 @login_manager.user_loader
 def load_user(user_id):
+    print(user_id)
     return User.query.get(int(user_id))
 
 class User(db.Model, UserMixin):
@@ -40,34 +41,20 @@ class Performance(db.Model):
     neutral = db.Column(db.Integer, nullable=False)
 
 class RegisterForm(FlaskForm):
-    number = IntegerField(validators=[
-                           InputRequired()], render_kw={"placeholder": "Student Number"})
-
-    name = StringField(validators=[
-                             InputRequired(), Length(min=1, max=50)], render_kw={"placeholder": "Name"})
-    
-    surname = StringField(validators=[
-                             InputRequired(), Length(min=1, max=50)], render_kw={"placeholder": "Surname"})
-    
-    password = PasswordField(validators=[
-                             InputRequired(), Length(min=4, max=50)], render_kw={"placeholder": "Password"})
-
+    number = IntegerField(validators=[InputRequired()], render_kw={"placeholder": "Student Number"})
+    name = StringField(validators=[InputRequired(), Length(min=1, max=50)], render_kw={"placeholder": "Name"})
+    surname = StringField(validators=[InputRequired(), Length(min=1, max=50)], render_kw={"placeholder": "Surname"})
+    password = PasswordField(validators=[InputRequired(), Length(min=4, max=50)], render_kw={"placeholder": "Password"})
     submit = SubmitField('Register')
 
-    def validate_username(self, username):
-        existing_user_username = User.query.filter_by(
-            username=username.data).first()
-        if existing_user_username:
-            raise ValidationError(
-                'That username already exists. Please choose a different one.')
+    def validate_username(self, number):
+        existing_user = User.query.filter_by(number=number.data).first()
+        if existing_user:
+            raise ValidationError('That username already exists. Please choose a different one.')
         
 class LoginForm(FlaskForm):
-    number = IntegerField(validators=[
-                           InputRequired()], render_kw={"placeholder": "Student Number"})
-
-    password = PasswordField(validators=[
-                             InputRequired(), Length(min=4, max=50)], render_kw={"placeholder": "Password"})
-
+    number = IntegerField(validators=[InputRequired()], render_kw={"placeholder": "Student Number"})
+    password = PasswordField(validators=[InputRequired(), Length(min=4, max=50)], render_kw={"placeholder": "Password"})
     submit = SubmitField('Login')
 
 @app.route('/', methods=['GET', 'POST'])
@@ -92,7 +79,7 @@ def logout():
 @app.route('/dashboard', methods=['GET', 'POST'])
 @login_required
 def dashboard():
-    return render_template('index.html')
+    return render_template('index.html', user=current_user)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():

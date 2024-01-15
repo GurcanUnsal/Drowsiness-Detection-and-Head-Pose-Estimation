@@ -35,8 +35,15 @@
   </head>
   <body>
     <h1 class="text-center fw-bold">Drowsiness Detection</h1>
+    <h1>
+        Welcome, {{ user.name }} {{ user.surname }}!
+    </h1>
+    <p>
+        Your Number: {{ user.number }}
+    </p>
     <button class="btn btn-primary" id="start-btn" onclick="startWebcam()">Start Webcam</button>
     <button class="btn btn-primary" disabled id="stop-btn" onclick="stopWebcam()">Stop Webcam</button>
+    <a class="btn btn-outline-warning" href="{{ url_for('logout') }}">Logout</a>
     <script
       type="text/javascript"
       src="{{url_for('static', filename='script/index.js')}}"
