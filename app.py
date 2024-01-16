@@ -21,7 +21,6 @@ login_manager.login_view = 'login'
 
 @login_manager.user_loader
 def load_user(user_id):
-    print(user_id)
     return User.query.get(int(user_id))
 
 class User(db.Model, UserMixin):
@@ -32,13 +31,6 @@ class User(db.Model, UserMixin):
 
     def get_id(self):
            return (self.number)
-
-class Performance(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    number = db.Column(db.Integer, db.ForeignKey('user.number'), nullable=False)
-    micorsleep = db.Column(db.Integer, nullable=False)
-    yawning = db.Column(db.Integer, nullable=False)
-    neutral = db.Column(db.Integer, nullable=False)
 
 class RegisterForm(FlaskForm):
     number = IntegerField(validators=[InputRequired()], render_kw={"placeholder": "Student Number"})
