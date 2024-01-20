@@ -32,9 +32,20 @@
     <script>
       const baseVideoUrl = "{{ url_for('video') }}";
     </script>
+    <style>
+        .centered {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        img {
+            margin-left: 35%;
+            margin-top: 2rem;
+        }
+    </style>
   </head>
   <body>
     <h1 class="text-center fw-bold">Drowsiness Detection</h1>
+    <div class="centered">
     <h1>
         Welcome, {{ user.name }} {{ user.surname }}!
     </h1>
@@ -43,7 +54,9 @@
     </p>
     <button class="btn btn-success" id="start-btn" onclick="startWebcam()">Start Webcam</button>
     <button class="btn btn-danger" disabled id="stop-btn" onclick="stopWebcam()">Stop Webcam</button>
+    
     <a class="btn btn-warning" href="{{ url_for('logout') }}">Logout</a>
+</div>
     <script
       type="text/javascript"
       src="{{url_for('static', filename='script/index.js')}}"

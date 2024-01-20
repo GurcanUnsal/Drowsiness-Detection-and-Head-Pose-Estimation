@@ -1,5 +1,6 @@
 let startButton = document.getElementById("start-btn");
 let stopButton = document.getElementById("stop-btn");
+let centeredDiv = document.getElementsByClassName("centered");
 
 const startWebcam = () => {
   let videoPlayer = document.createElement("img");
