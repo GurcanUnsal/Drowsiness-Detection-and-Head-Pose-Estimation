@@ -8,6 +8,8 @@ const startWebcam = () => {
   videoPlayer.id = "videoPlayer";
   videoPlayer.src = baseVideoUrl;
   videoPlayer.classList.add("rounded");
+  videoPlayer.classList.add("mt-2");
+  videoPlayer.classList.add("mx-auto");
   videoPlayer.classList.add("d-block");
 
   document.body.appendChild(videoPlayer);
